@@ -114,6 +114,8 @@
 #define I_32_RN_SM16825_5 45
 #define I_32_I2_SM16825_5 46
 
+#define I_32_I2_UCS_7 49
+
 //APA102
 #define I_HS_DOT_3 101 //hardware SPI
 #define I_SS_DOT_3 102 //soft SPI
@@ -273,6 +275,8 @@
 #define B_32_RN_UCS_4 NeoPixelBus<NeoRgbwUcs8904Feature, NeoEsp32RmtNWs2812xMethod>
 #define B_32_I2_UCS_4 NeoPixelBus<NeoRgbwUcs8904Feature, X1800KbpsMethod>
 #define B_32_IP_UCS_4 NeoPixelBus<NeoRgbwUcs8904Feature, X8800KbpsMethod>// parallel I2S
+//UCS7604
+#define B_32_I2_UCS_7 NeoPixelBus<NeoRgbwFeature, NeoEsp32I2s1Ucs7604Method>
 //APA106
 #define B_32_RN_APA106_3 NeoPixelBus<NeoGrbFeature, NeoEsp32RmtNApa106Method>
 #define B_32_I2_APA106_3 NeoPixelBus<NeoGrbFeature, X1Apa106Method>
@@ -447,6 +451,7 @@ class PolyBus {
       case I_32_I2_TM2_3: if (_useParallelI2S) (static_cast<B_32_IP_TM2_3*>(busPtr))->Begin(); else (static_cast<B_32_I2_TM2_3*>(busPtr))->Begin(); break;
       case I_32_I2_UCS_3: if (_useParallelI2S) (static_cast<B_32_IP_UCS_3*>(busPtr))->Begin(); else (static_cast<B_32_I2_UCS_3*>(busPtr))->Begin(); break;
       case I_32_I2_UCS_4: if (_useParallelI2S) (static_cast<B_32_IP_UCS_4*>(busPtr))->Begin(); else (static_cast<B_32_I2_UCS_4*>(busPtr))->Begin(); break;
+      case I_32_I2_UCS_7: if (_useParallelI2S) (static_cast<B_32_I2_UCS_7*>(busPtr))->Begin(); else (static_cast<B_32_I2_UCS_7*>(busPtr))->Begin(); break;
       case I_32_I2_FW6_5: if (_useParallelI2S) (static_cast<B_32_IP_FW6_5*>(busPtr))->Begin(); else (static_cast<B_32_I2_FW6_5*>(busPtr))->Begin(); break;
       case I_32_I2_APA106_3: if (_useParallelI2S) (static_cast<B_32_IP_APA106_3*>(busPtr))->Begin(); else (static_cast<B_32_I2_APA106_3*>(busPtr))->Begin(); break;
       case I_32_I2_2805_5: if (_useParallelI2S) (static_cast<B_32_IP_2805_5*>(busPtr))->Begin(); else (static_cast<B_32_I2_2805_5*>(busPtr))->Begin(); break;
@@ -559,6 +564,7 @@ class PolyBus {
       case I_32_I2_TM2_3: if (_useParallelI2S) busPtr = new B_32_IP_TM2_3(len, pins[0]); else busPtr = new B_32_I2_TM2_3(len, pins[0]); break;
       case I_32_I2_UCS_3: if (_useParallelI2S) busPtr = new B_32_IP_UCS_3(len, pins[0]); else busPtr = new B_32_I2_UCS_3(len, pins[0]); break;
       case I_32_I2_UCS_4: if (_useParallelI2S) busPtr = new B_32_IP_UCS_4(len, pins[0]); else busPtr = new B_32_I2_UCS_4(len, pins[0]); break;
+      case I_32_I2_UCS_7: if (_useParallelI2S) busPtr = new B_32_I2_UCS_7(len, pins[0]); else busPtr = new B_32_I2_UCS_7(len, pins[0]); break;
       case I_32_I2_APA106_3: if (_useParallelI2S) busPtr = new B_32_IP_APA106_3(len, pins[0]); else busPtr = new B_32_I2_APA106_3(len, pins[0]); break;
       case I_32_I2_FW6_5: if (_useParallelI2S) busPtr = new B_32_IP_FW6_5(len, pins[0]); else busPtr = new B_32_I2_FW6_5(len, pins[0]); break;
       case I_32_I2_2805_5: if (_useParallelI2S) busPtr = new B_32_IP_2805_5(len, pins[0]); else busPtr = new B_32_I2_2805_5(len, pins[0]); break;
@@ -658,6 +664,7 @@ class PolyBus {
       case I_32_I2_TM2_3: if (_useParallelI2S) (static_cast<B_32_IP_TM2_3*>(busPtr))->Show(consistent); else (static_cast<B_32_I2_TM2_3*>(busPtr))->Show(consistent); break;
       case I_32_I2_UCS_3: if (_useParallelI2S) (static_cast<B_32_IP_UCS_3*>(busPtr))->Show(consistent); else (static_cast<B_32_I2_UCS_3*>(busPtr))->Show(consistent); break;
       case I_32_I2_UCS_4: if (_useParallelI2S) (static_cast<B_32_IP_UCS_4*>(busPtr))->Show(consistent); else (static_cast<B_32_I2_UCS_4*>(busPtr))->Show(consistent); break;
+      case I_32_I2_UCS_7: if (_useParallelI2S) (static_cast<B_32_I2_UCS_7*>(busPtr))->Show(consistent); else (static_cast<B_32_I2_UCS_7*>(busPtr))->Show(consistent); break;
       case I_32_I2_APA106_3: if (_useParallelI2S) (static_cast<B_32_IP_APA106_3*>(busPtr))->Show(consistent); else (static_cast<B_32_I2_APA106_3*>(busPtr))->Show(consistent); break;
       case I_32_I2_FW6_5: if (_useParallelI2S) (static_cast<B_32_IP_FW6_5*>(busPtr))->Show(consistent); else (static_cast<B_32_I2_FW6_5*>(busPtr))->Show(consistent); break;
       case I_32_I2_2805_5: if (_useParallelI2S) (static_cast<B_32_IP_2805_5*>(busPtr))->Show(consistent); else (static_cast<B_32_I2_2805_5*>(busPtr))->Show(consistent); break;
@@ -754,6 +761,7 @@ class PolyBus {
       case I_32_I2_TM2_3: if (_useParallelI2S) return (static_cast<B_32_IP_TM2_3*>(busPtr))->CanShow(); else return (static_cast<B_32_I2_TM2_3*>(busPtr))->CanShow(); break;
       case I_32_I2_UCS_3: if (_useParallelI2S) return (static_cast<B_32_IP_UCS_3*>(busPtr))->CanShow(); else return (static_cast<B_32_I2_UCS_3*>(busPtr))->CanShow(); break;
       case I_32_I2_UCS_4: if (_useParallelI2S) return (static_cast<B_32_IP_UCS_4*>(busPtr))->CanShow(); else return (static_cast<B_32_I2_UCS_4*>(busPtr))->CanShow(); break;
+      case I_32_I2_UCS_7: if (_useParallelI2S) return (static_cast<B_32_I2_UCS_7*>(busPtr))->CanShow(); else return (static_cast<B_32_I2_UCS_7*>(busPtr))->CanShow(); break;
       case I_32_I2_APA106_3: if (_useParallelI2S) return (static_cast<B_32_IP_APA106_3*>(busPtr))->CanShow(); else return (static_cast<B_32_I2_APA106_3*>(busPtr))->CanShow(); break;
       case I_32_I2_FW6_5: if (_useParallelI2S) return (static_cast<B_32_IP_FW6_5*>(busPtr))->CanShow(); else return (static_cast<B_32_I2_FW6_5*>(busPtr))->CanShow(); break;
       case I_32_I2_2805_5: if (_useParallelI2S) return (static_cast<B_32_IP_2805_5*>(busPtr))->CanShow(); else return (static_cast<B_32_I2_2805_5*>(busPtr))->CanShow(); break;
@@ -876,6 +884,7 @@ class PolyBus {
       case I_32_I2_TM2_3: if (_useParallelI2S) (static_cast<B_32_IP_TM2_3*>(busPtr))->SetPixelColor(pix, RgbColor(col)); else (static_cast<B_32_I2_TM2_3*>(busPtr))->SetPixelColor(pix, RgbColor(col)); break;
       case I_32_I2_UCS_3: if (_useParallelI2S) (static_cast<B_32_IP_UCS_3*>(busPtr))->SetPixelColor(pix, Rgb48Color(RgbColor(col))); else (static_cast<B_32_I2_UCS_3*>(busPtr))->SetPixelColor(pix, Rgb48Color(RgbColor(col))); break;
       case I_32_I2_UCS_4: if (_useParallelI2S) (static_cast<B_32_IP_UCS_4*>(busPtr))->SetPixelColor(pix, Rgbw64Color(col)); else (static_cast<B_32_I2_UCS_4*>(busPtr))->SetPixelColor(pix, Rgbw64Color(col)); break;
+      case I_32_I2_UCS_7: if (_useParallelI2S) (static_cast<B_32_I2_UCS_7*>(busPtr))->SetPixelColor(pix, col); else (static_cast<B_32_I2_UCS_7*>(busPtr))->SetPixelColor(pix, col); break;
       case I_32_I2_APA106_3: if (_useParallelI2S) (static_cast<B_32_IP_APA106_3*>(busPtr))->SetPixelColor(pix, RgbColor(col)); else (static_cast<B_32_I2_APA106_3*>(busPtr))->SetPixelColor(pix, RgbColor(col)); break;
       case I_32_I2_FW6_5: if (_useParallelI2S) (static_cast<B_32_IP_FW6_5*>(busPtr))->SetPixelColor(pix, RgbwwColor(col.R, col.G, col.B, cctWW, cctCW)); else (static_cast<B_32_I2_FW6_5*>(busPtr))->SetPixelColor(pix, RgbwwColor(col.R, col.G, col.B, cctWW, cctCW)); break;
       case I_32_I2_2805_5: if (_useParallelI2S) (static_cast<B_32_IP_2805_5*>(busPtr))->SetPixelColor(pix, RgbwwColor(col.R, col.G, col.B, cctWW, cctCW)); else (static_cast<B_32_I2_2805_5*>(busPtr))->SetPixelColor(pix, RgbwwColor(col.R, col.G, col.B, cctWW, cctCW)); break;
@@ -973,6 +982,7 @@ class PolyBus {
       case I_32_I2_TM2_3: col = (_useParallelI2S) ? (static_cast<B_32_IP_TM2_3*>(busPtr))->GetPixelColor(pix) : (static_cast<B_32_I2_TM2_3*>(busPtr))->GetPixelColor(pix); break;
       case I_32_I2_UCS_3: { Rgb48Color c = (_useParallelI2S) ? (static_cast<B_32_IP_UCS_3*>(busPtr))->GetPixelColor(pix) : (static_cast<B_32_I2_UCS_3*>(busPtr))->GetPixelColor(pix); col = RGBW32(c.R/257,c.G/257,c.B/257,0); } break;
       case I_32_I2_UCS_4: { Rgbw64Color c = (_useParallelI2S) ? (static_cast<B_32_IP_UCS_4*>(busPtr))->GetPixelColor(pix) : (static_cast<B_32_I2_UCS_4*>(busPtr))->GetPixelColor(pix); col = RGBW32(c.R/257,c.G/257,c.B/257,c.W/257); } break;
+      case I_32_I2_UCS_7: col = (_useParallelI2S) ? (static_cast<B_32_I2_UCS_7*>(busPtr))->GetPixelColor(pix) : (static_cast<B_32_I2_UCS_7*>(busPtr))->GetPixelColor(pix); break;
       case I_32_I2_APA106_3: col = (_useParallelI2S) ? (static_cast<B_32_IP_APA106_3*>(busPtr))->GetPixelColor(pix) : (static_cast<B_32_I2_APA106_3*>(busPtr))->GetPixelColor(pix); break;
       case I_32_I2_FW6_5: { RgbwwColor c = (_useParallelI2S) ? (static_cast<B_32_IP_FW6_5*>(busPtr))->GetPixelColor(pix) : (static_cast<B_32_I2_FW6_5*>(busPtr))->GetPixelColor(pix); col = RGBW32(c.R,c.G,c.B,max(c.WW,c.CW)); } break; // will not return original W
       case I_32_I2_2805_5: { RgbwwColor c = (_useParallelI2S) ? (static_cast<B_32_IP_2805_5*>(busPtr))->GetPixelColor(pix) : (static_cast<B_32_I2_2805_5*>(busPtr))->GetPixelColor(pix); col = RGBW32(c.R,c.G,c.B,max(c.WW,c.CW)); } break; // will not return original W
@@ -1088,6 +1098,7 @@ class PolyBus {
       case I_32_I2_TM2_3: if (_useParallelI2S) delete (static_cast<B_32_IP_TM2_3*>(busPtr)); else delete (static_cast<B_32_I2_TM2_3*>(busPtr)); break;
       case I_32_I2_UCS_3: if (_useParallelI2S) delete (static_cast<B_32_IP_UCS_3*>(busPtr)); else delete (static_cast<B_32_I2_UCS_3*>(busPtr)); break;
       case I_32_I2_UCS_4: if (_useParallelI2S) delete (static_cast<B_32_IP_UCS_4*>(busPtr)); else delete (static_cast<B_32_I2_UCS_4*>(busPtr)); break;
+      case I_32_I2_UCS_7: if (_useParallelI2S) delete (static_cast<B_32_I2_UCS_7*>(busPtr)); else delete (static_cast<B_32_I2_UCS_7*>(busPtr)); break;
       case I_32_I2_APA106_3: if (_useParallelI2S) delete (static_cast<B_32_IP_APA106_3*>(busPtr)); else delete (static_cast<B_32_I2_APA106_3*>(busPtr)); break;
       case I_32_I2_FW6_5: if (_useParallelI2S) delete (static_cast<B_32_IP_FW6_5*>(busPtr)); else delete (static_cast<B_32_I2_FW6_5*>(busPtr)); break;
       case I_32_I2_2805_5: if (_useParallelI2S) delete (static_cast<B_32_IP_2805_5*>(busPtr)); else delete (static_cast<B_32_I2_2805_5*>(busPtr)); break;
@@ -1185,6 +1196,7 @@ class PolyBus {
       case I_32_I2_TM2_3: size = (_useParallelI2S) ? (static_cast<B_32_IP_TM2_3*>(busPtr))->PixelsSize()*4 : (static_cast<B_32_I2_TM2_3*>(busPtr))->PixelsSize()*4; break;
       case I_32_I2_UCS_3: size = (_useParallelI2S) ? (static_cast<B_32_IP_UCS_3*>(busPtr))->PixelsSize()*4 : (static_cast<B_32_I2_UCS_3*>(busPtr))->PixelsSize()*4; break;
       case I_32_I2_UCS_4: size = (_useParallelI2S) ? (static_cast<B_32_IP_UCS_4*>(busPtr))->PixelsSize()*4 : (static_cast<B_32_I2_UCS_4*>(busPtr))->PixelsSize()*4; break;
+      case I_32_I2_UCS_7: size = (_useParallelI2S) ? (static_cast<B_32_I2_UCS_7*>(busPtr))->PixelsSize()*4 : (static_cast<B_32_I2_UCS_7*>(busPtr))->PixelsSize()*4; break;
       case I_32_I2_APA106_3: size = (_useParallelI2S) ? (static_cast<B_32_IP_APA106_3*>(busPtr))->PixelsSize()*4 : (static_cast<B_32_I2_APA106_3*>(busPtr))->PixelsSize()*4; break;
       case I_32_I2_FW6_5: size = (_useParallelI2S) ? (static_cast<B_32_IP_FW6_5*>(busPtr))->PixelsSize()*4 : (static_cast<B_32_I2_FW6_5*>(busPtr))->PixelsSize()*4; break;
       case I_32_I2_2805_5: size = (_useParallelI2S) ? (static_cast<B_32_IP_2805_5*>(busPtr))->PixelsSize()*4 : (static_cast<B_32_I2_2805_5*>(busPtr))->PixelsSize()*4; break;
@@ -1265,6 +1277,7 @@ class PolyBus {
       case I_32_I2_TM2_3: size *= 4; break;
       case I_32_I2_UCS_3: size *= 2*4; break;
       case I_32_I2_UCS_4: size = (size + count)*2*4; break;
+      case I_32_I2_UCS_7: size = (size + count)*4; break;
       case I_32_I2_APA106_3: size *= 4; break;
       case I_32_I2_FW6_5: size = (size + 2*count)*4; break;
       case I_32_I2_2805_5: size = (size + 2*count)*4; break;
@@ -1386,6 +1399,8 @@ class PolyBus {
           return I_32_RN_UCS_3 + offset;
         case TYPE_UCS8904:
           return I_32_RN_UCS_4 + offset;
+        case TYPE_UCS7604:
+          return I_32_I2_UCS_7;
         case TYPE_APA106:
           return I_32_RN_APA106_3 + offset;
         case TYPE_FW1906:
